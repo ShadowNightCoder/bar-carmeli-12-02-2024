@@ -1,1 +1,15 @@
-<p>search works!</p>
+<div class="search-container">
+    <img [src]="src" alt="now weather img" class="courentweather img-rounded">
+    <div class="search">
+        <div class="col-xs-5 size-max">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" #CityInput>
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit" (click)="onSubmit(CityInput.value)">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
