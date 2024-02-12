@@ -5,7 +5,6 @@
     .search {
         width: 100%;
         height: 4em;
-        background-color: aqua;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -14,4 +13,31 @@
 
 .btn-default:focus {
     outline: none;
+}
+
+
+.five-days-weather{
+    width: 100%;
+    height: 100%;
+    padding: 0 1em;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.day{
+    height: 13em;
+    width: 10em;
+    background-color: pink;
+
+    .weather-img{
+        width: 100%;
+    }
+
+    .day-name{
+        width: 100%;
+        height: auto;
+        text-align: center;
+        font-size: 1.2em;
+        
+    }
 }

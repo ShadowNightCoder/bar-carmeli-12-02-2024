@@ -1,17 +1,30 @@
 <div id="weather-container">
-    <div class="search">
-        <div class="col-xs-4">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"></i>
-                  </button>
-                </div>
-              </div>
+  <div class="search">
+    <div class="col-xs-7">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" #CityInput>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit" (click)="getCity(CityInput.value)">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cityInformation">
+    <div class="cityName">{{CourentName}}</div>
+    <div class="cityWeather">{{CourentCityWeatherText}}</div>
+    <div class="cityWeatherInMetric">{{CourentCityWeatherTemperature.Value}} {{CourentCityWeatherTemperature.Unit}}
     </div>
 
+    <div class="five-days-weather">
+      <div class="day">
+        <img src="./../../../../assets/img/weather-forecast.png" alt="weather reflect image" class="weather-img">
+        <div class="day-name">sunday</div>
+      </div>
+    </div>
+  </div>
 
 
 </div>
