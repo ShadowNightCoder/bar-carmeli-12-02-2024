@@ -10,12 +10,7 @@
 
 
     <div class="five-days-weather" *ngFor="let weather of weatherForFiveDays">
-      <div class="day">
-        <img src="./../../../../assets/img/weather-forecast.png" alt="weather reflect image" class="weather-img">
-        <div class="date">{{weather.Date | date}}</div>
-        <div class="day">{{weather.Day.PrecipitationIntensity}} {{weather.Day.PrecipitationType}}</div>
-        <div class="Night">{{weather.Night.PrecipitationIntensity}} {{weather.Night.PrecipitationType}}</div>
-      </div>
+      <app-card [weatherForDay]="weather"></app-card>
     </div>
   </div>
 

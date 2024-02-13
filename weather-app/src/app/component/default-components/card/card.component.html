@@ -1,1 +1,6 @@
-<p>card works!</p>
+<div class="day">
+    <img src="./../../../../assets/img/weather-forecast.png" alt="weather reflect image" class="weather-img">
+    <div class="date">{{weatherForDay.Date | date}}</div>
+    <div class="day">{{weatherForDay.Day.PrecipitationIntensity}} {{weatherForDay.Day.PrecipitationType}}</div>
+    <div class="Night">{{weatherForDay.Night.PrecipitationIntensity}} {{weatherForDay.Night.PrecipitationType}}</div>
+</div>
