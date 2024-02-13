@@ -1,6 +1,7 @@
 <div class="day">
-    <img src="./../../../../assets/img/weather-forecast.png" alt="weather reflect image" class="weather-img">
+    <img [src]="src" alt="day" class="weather-day-img">
     <div class="date">{{weatherForDay.Date | date}}</div>
-    <div class="day">{{weatherForDay.Day.PrecipitationIntensity}} {{weatherForDay.Day.PrecipitationType}}</div>
-    <div class="Night">{{weatherForDay.Night.PrecipitationIntensity}} {{weatherForDay.Night.PrecipitationType}}</div>
+    <div class="day"> Day: {{weatherForDay.Day.PrecipitationIntensity}} {{weatherForDay.Day.PrecipitationType}}</div>
+    <div class="Night">Night: {{weatherForDay.Night.PrecipitationIntensity}} {{weatherForDay.Night.PrecipitationType}}</div>
+    <div class="Temperature-limit">Temperature between: {{this.dayTemperature.TMinimum}}/{{this.dayTemperature.TMaximum}}C</div>
 </div>

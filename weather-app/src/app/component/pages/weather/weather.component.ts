@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiServiceService } from 'src/app/services/api-service.service';
+import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
 import { map } from 'rxjs/operators';
 import { CitiesData } from 'src/app/interface/citiesinfo';
 import { CurrentWeather } from 'src/app/interface/currentweather';
@@ -23,6 +23,7 @@ export class WeatherComponent implements OnInit {
   // CityFiveDaysWether: CityFiveDaysWether[] = []
   CourentName = '';
   CourentCityWeatherText = '';
+  CourentCityTime = '';
   CourentCityWeatherTemperature: any = { Value: 0, Unit: 'C', UnitType: 0 };
 
 
@@ -65,6 +66,7 @@ export class WeatherComponent implements OnInit {
           console.log(city.WeatherText)
           this.CourentCityWeatherText = city.WeatherText;
           this.CourentCityWeatherTemperature = city.Temperature.Metric;
+          this.CourentCityTime = city.LocalObservationDateTime;
         }
       },
       error: (error) => { error.message }
@@ -82,6 +84,16 @@ export class WeatherComponent implements OnInit {
       response.DailyForecasts.forEach((forecast: DailyForecast) => {
         const forecast1: weatherForFiveDays = {
           Date: forecast.Date,
+          Temperature: {
+            Minimum: {
+                Value: forecast.Temperature.Minimum.Value,
+                Unit: forecast.Temperature.Minimum.Unit,
+            },
+            Maximum: {
+                Value: forecast.Temperature.Maximum.Value,
+                Unit: forecast.Temperature.Maximum.Unit,
+            }
+        },
           Day: {
               PrecipitationIntensity: forecast.Day.PrecipitationIntensity,
               PrecipitationType: forecast.Day.PrecipitationType

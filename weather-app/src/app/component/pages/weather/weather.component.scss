@@ -4,21 +4,32 @@
 
 }
 
-
-.five-days-weather{
+.five-days-box{
     width: 100%;
     height: 100%;
-    padding: 0 1em;
+}
+
+.card-box{
+    width: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     flex-wrap: wrap;
+    padding: 0 1em;
+    background-color: aqua;
+}
+
+.five-days-weather{
+    width: fit-content;
+    height: fit-content;
+    margin: 1em 0;
+    border: 1px solid green;
+    
 }
 
 .day{
-    height: 13em;
-    width: 10em;
-    background-color: pink;
-
+    
     .weather-img{
         width: 100%;
     }

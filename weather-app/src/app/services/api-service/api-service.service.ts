@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { CitiesData } from '../interface/citiesinfo';
-import { CurrentWeather } from '../interface/currentweather';
+import { CitiesData } from '../../interface/citiesinfo';
+import { CurrentWeather } from '../../interface/currentweather';
 // import { CityFiveDaysWether } from '../interface/fivedaysweather';
 // import { WeatherData } from '../interface/fivedaysweather';
-import { WeatherData } from '../interface/fivedaysweather';
+import { WeatherData } from '../../interface/fivedaysweather';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiServiceService {
 
-  apiKey = "O7X9al4UR6GuaARJCI2MZ1rnn3fxImZ9"
+  apiKey = "fZAarvwDEL0Wzuv83mfl0Z1qdcIgeNIh"
 
   constructor(private http: HttpClient) { }
 
