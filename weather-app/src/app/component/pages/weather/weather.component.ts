@@ -78,6 +78,7 @@ export class WeatherComponent implements OnInit {
 
   getFiveDaysForecast(Locationkey: string) {
     console.log(Locationkey)
+    this.weatherForFiveDays = []; //i dont want to add the city weather with more citys so i make sure for every request i add i delete what was in the array
     this.weatherApi.getCityDailyForecasts(Locationkey).subscribe(response => {
       // const { Headline: { Text: WeatherData } } = response;
       // console.log(WeatherData);
@@ -104,7 +105,7 @@ export class WeatherComponent implements OnInit {
           }
       };
         console.log("i will show you the day now! " + forecast.Day)
-        this.weatherForFiveDays.push(forecast1)
+        this.weatherForFiveDays.push(forecast1);
         console.log(forecast);
       });
     })
