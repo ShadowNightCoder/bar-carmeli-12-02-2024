@@ -9,6 +9,7 @@ import { FavoritesComponent } from './component/pages/favorites/favorites.compon
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './component/default-components/search/search.component';
+import { CardComponent } from './component/default-components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SearchComponent } from './component/default-components/search/search.co
     HeaderComponent,
     WeatherComponent,
     FavoritesComponent,
-    SearchComponent
+    SearchComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

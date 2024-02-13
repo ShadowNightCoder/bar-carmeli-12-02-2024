@@ -1,13 +1,62 @@
-interface CityFiveDaysWether {
-    DailyForecasts: Array<{
-        Date: String;
-        Day: {
-            IconPhrase: string;
-          };
-          Night: {
-            IconPhrase: string;
-          };
-    }>
+// interface Headline {
+//   EffectiveDate: string;
+//   EffectiveEpochDate: number;
+//   Severity: number;
+//   Text: string;
+//   Category: string;
+//   EndDate: string;
+//   EndEpochDate: number;
+//   MobileLink: string;
+//   Link: string;
+// }
+
+// export interface WeatherData {
+//   Headline: Headline;
+// }
+
+interface Temperature {
+  Minimum: {
+    Value: number;
+    Unit: string;
+    UnitType: number;
+  };
+  Maximum: {
+    Value: number;
+    Unit: string;
+    UnitType: number;
+  };
 }
 
-export type CityFiveDaysWetherArray = CityFiveDaysWether[];
+interface Day {
+  Icon: number;
+  IconPhrase: string;
+  HasPrecipitation: boolean;
+  PrecipitationType: string;
+  PrecipitationIntensity: string;
+}
+
+interface Night {
+  Icon: number;
+  IconPhrase: string;
+  HasPrecipitation: boolean;
+  PrecipitationType: string;
+  PrecipitationIntensity: string;
+}
+
+export interface DailyForecast {
+  Date: string;
+  EpochDate: number;
+  Temperature: Temperature;
+  Day: Day;
+  Night: Night;
+  Sources: string[];
+  MobileLink: string;
+  Link: string;
+}
+
+export interface WeatherData {
+  Headline: {
+    Text: string;
+  };
+  DailyForecasts: DailyForecast[];
+}

@@ -3,7 +3,10 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 import { map } from 'rxjs/operators';
 import { CitiesData } from 'src/app/interface/citiesinfo';
 import { CurrentWeather } from 'src/app/interface/currentweather';
-import { CityFiveDaysWetherArray } from 'src/app/interface/fivedaysweather';
+// import { WeatherData } from 'src/app/interface/fivedaysweather';
+import { DailyForecast, WeatherData } from 'src/app/interface/fivedaysweather';
+import { weatherForFiveDays } from 'src/app/interface/weatherarray';
+
 
 @Component({
   selector: 'app-weather',
@@ -16,10 +19,11 @@ export class WeatherComponent implements OnInit {
   fiveDaysForecast: string[] = [];
   citiesInfoArray: CitiesData[] = [];
   CurrentWeatherArray: CurrentWeather[] = [];
-  CityFiveDaysWether: CityFiveDaysWetherArray = []
+  weatherForFiveDays: weatherForFiveDays[] = [];
+  // CityFiveDaysWether: CityFiveDaysWether[] = []
   CourentName = '';
   CourentCityWeatherText = '';
-  CourentCityWeatherTemperature : any = {Value: 0, Unit: 'C', UnitType: 0};
+  CourentCityWeatherTemperature: any = { Value: 0, Unit: 'C', UnitType: 0 };
 
 
   recivedData: any;
@@ -72,19 +76,40 @@ export class WeatherComponent implements OnInit {
 
   getFiveDaysForecast(Locationkey: string) {
     console.log(Locationkey)
-    this.weatherApi.getCityDailyForecasts(Locationkey).subscribe({
-      next: (res) => {
-        console.log(res)
-        for (const city of res) {
-          console.log(city.DailyForecasts)
-          this.CityFiveDaysWether.push(city)
-        }
-        console.log('--------------------END')
-        console.log(this.CityFiveDaysWether)
-      },
-      error: (error) => { error.message }
-    },
-    )
+    this.weatherApi.getCityDailyForecasts(Locationkey).subscribe(response => {
+      // const { Headline: { Text: WeatherData } } = response;
+      // console.log(WeatherData);
+      response.DailyForecasts.forEach((forecast: DailyForecast) => {
+        const forecast1: weatherForFiveDays = {
+          Date: forecast.Date,
+          Day: {
+              PrecipitationIntensity: forecast.Day.PrecipitationIntensity,
+              PrecipitationType: forecast.Day.PrecipitationType
+          },
+          Night: {
+              PrecipitationIntensity: forecast.Night.PrecipitationIntensity,
+              PrecipitationType: forecast.Night.PrecipitationType
+          }
+      };
+        console.log("i will show you the day now! " + forecast.Day)
+        this.weatherForFiveDays.push(forecast1)
+        console.log(forecast);
+      });
+    })
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
