@@ -3,13 +3,14 @@
     <div class="search">
         <div class="col-xs-5 size-max">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" #CityInput>
+                <input type="text" class="form-control" placeholder="Search City" #CityInput pattern="[a-zA-Z ]+">
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit" (click)="onSubmit(CityInput.value)">
+                    <button class="btn btn-default" type="submit" (click)="onSubmit(CityInput.value);"  >
                         <i class="glyphicon glyphicon-search"></i>
                     </button>
                 </div>
             </div>
+            <div class="error_wrong_input" *ngIf="badInput">{{this.errorShow}}</div>
         </div>
     </div>
 </div>

@@ -16,12 +16,21 @@ export class CardComponent implements OnInit{
     TMinimum: 0,
     TMaximum: 0
   };
+  showOrNot: any = {};
+
+  updateShowOrNot(): void {
+    this.showOrNot = {
+      date: this.weatherForDay.Date,
+      day: this.weatherForDay.Day.PrecipitationIntensity && this.weatherForDay.Day.PrecipitationType,
+      night: this.weatherForDay.Night.PrecipitationIntensity && this.weatherForDay.Night.PrecipitationIntensity,
+      temp: this.dayTemperature.TMinimum && this.dayTemperature.TMaximum,
+    };
+  }
   
   ngOnInit(): void {
+    this.updateShowOrNot();
     const date = new Date(this.weatherForDay.Date);
     const dayIndex = date.getDay();
-    console.log(date)
-    console.log(this.daysOfWeek[dayIndex])
     this.src="./../../../../assets/img/7Days/"+this.daysOfWeek[dayIndex]+".png"
 
     
@@ -30,9 +39,7 @@ export class CardComponent implements OnInit{
       this.dayTemperature.TMinimum = fahrenheitToCelsius(this.weatherForDay.Temperature.Minimum.Value.valueOf());
     }
     if(this.weatherForDay.Temperature.Maximum.Unit === 'F'){
-      console.log("the weather is: f " + this.weatherForDay.Temperature.Maximum.Value)
       this.dayTemperature.TMaximum = fahrenheitToCelsius(this.weatherForDay.Temperature.Maximum.Value.valueOf());
-      console.log("the weather is: C " + this.weatherForDay.Temperature.Maximum.Value)
     }
 
   }

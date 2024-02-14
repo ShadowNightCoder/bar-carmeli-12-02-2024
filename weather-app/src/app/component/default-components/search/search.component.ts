@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { dayOrNight } from 'src/app/generic-func/genericFunc';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { dayOrNight, isEnglishLettersOnly } from 'src/app/generic-func/genericFunc';
 
 @Component({
   selector: 'app-search',
@@ -7,8 +7,13 @@ import { dayOrNight } from 'src/app/generic-func/genericFunc';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  timeStatus = ''
-  src = ''
+  timeStatus = '';
+  src = '';
+  badInput = false;
+  errorShow = '';
+  @ViewChild('CityInput') CityInput!: ElementRef;
+
+
   @Input() cityTime = '';
 
   @Output() citySelected = new EventEmitter<string>();
@@ -27,6 +32,7 @@ export class SearchComponent implements OnInit {
       }
     })
 
+    
 
     // this.timeStatus = dayOrNight(this.cityTime)
     // if (this.timeStatus === 'day') {
@@ -41,10 +47,24 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit(CityInput: string) {
-    this.citySelected.emit(CityInput); // Emit the city data
+    if(CityInput){
+      if(isEnglishLettersOnly(CityInput)){
+      this.badInput= false;
+      this.errorShow = "You entered invalid input. Please only enter English letters!"
+    }
+    else{
+      this.badInput= true;
+      this.citySelected.emit(CityInput); // Emit the city data
+    }
+    this.CityInput.nativeElement.value = '';
+    }
+    else{
+      this.errorShow = "You Didnt Entred Anything In Search!"
+    }
+    
   }
 
 
-
+  
 
 }

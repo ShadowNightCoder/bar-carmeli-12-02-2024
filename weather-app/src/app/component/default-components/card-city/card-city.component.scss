@@ -1,3 +1,42 @@
-.cityNow{
-    border: 2px solid pink;
+.cityNow {
+    width: 100%;
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-text-color);
+
+    .cityName {
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+    .cityTimeNow,
+    .cityWeather,
+    .cityWeatherInMetric {
+        font-size: 1.1em;
+    }
+
+    .buttons {
+        .btn {
+            max-width: 10em;
+            color: var(--primary-text-color);
+        }
+
+        .btn:focus, .btn:active {
+            outline: none;
+        }
+
+        .Add-City {
+            font-size: 1.2em;
+            background-color: var(--primary-button-add);
+        }
+
+        .Remove-City {
+            font-size: 1.2em;
+            background-color: var(--primary-button-remove);
+        }
+    }
+
 }

@@ -21,7 +21,8 @@ export class WeatherComponent implements OnInit {
   CurrentWeatherArray: CurrentWeather[] = [];
   weatherForFiveDays: weatherForFiveDays[] = [];
   // CityFiveDaysWether: CityFiveDaysWether[] = []
-  CourentName = '';
+  CourentCityKey = '';
+  CourentCityName = '';
   CourentCityWeatherText = '';
   CourentCityTime = '';
   CourentCityWeatherTemperature: any = { Value: 0, Unit: 'C', UnitType: 0 };
@@ -37,15 +38,22 @@ export class WeatherComponent implements OnInit {
 
 
   getCity(cityName: string) {
-    console.log(cityName)
+    // console.log(cityName)
     this.weatherApi.getCityInfo(cityName)
       .subscribe({
         next: (res) => {
           // this.citiesInfoArray = res;
-          console.log(res)
+          // console.log(res)
           for (const city of res) {
+            console.log('------------------------------------')
+            console.log('------------------------------------')
+            console.log(city.Country)
+            console.log(city.LocalizedName)
             console.log(city.Key)
-            this.CourentName = city.LocalizedName;
+            console.log('------------------------------------')
+            console.log('------------------------------------')
+            this.CourentCityKey = city.Key;
+            this.CourentCityName = city.LocalizedName;
             this.getCityCurrentWeather(city.Key)
             this.getFiveDaysForecast(city.Key)
           }
@@ -63,7 +71,7 @@ export class WeatherComponent implements OnInit {
         // this.CurrentWeatherArray = res;
         console.log(res)
         for (const city of res) {
-          console.log(city.WeatherText)
+          // console.log(city.WeatherText)
           this.CourentCityWeatherText = city.WeatherText;
           this.CourentCityWeatherTemperature = city.Temperature.Metric;
           this.CourentCityTime = city.LocalObservationDateTime;
@@ -104,9 +112,9 @@ export class WeatherComponent implements OnInit {
               PrecipitationType: forecast.Night.PrecipitationType
           }
       };
-        console.log("i will show you the day now! " + forecast.Day)
+        // console.log("i will show you the day now! " + forecast.Day)
         this.weatherForFiveDays.push(forecast1);
-        console.log(forecast);
+        // console.log(forecast);
       });
     })
   }

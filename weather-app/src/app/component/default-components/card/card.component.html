@@ -7,8 +7,8 @@
 </div> -->
 <div class="day-card">
     <img [src]="src" alt="day" class="weather-day-img">
-    <div class="date">{{weatherForDay.Date | date}}</div>
-    <div class="day"> Day: {{weatherForDay.Day.PrecipitationIntensity}} {{weatherForDay.Day.PrecipitationType}}</div>
-    <div class="Night">Night: {{weatherForDay.Night.PrecipitationIntensity}} {{weatherForDay.Night.PrecipitationType}}</div>
-    <div class="Temperature-limit">Temperature between: {{this.dayTemperature.TMinimum}}/{{this.dayTemperature.TMaximum}}C</div>
+    <div class="date" *ngIf="showOrNot.date">{{weatherForDay.Date | date}}</div>
+    <div class="day" *ngIf="showOrNot.day"> Day: {{weatherForDay.Day.PrecipitationIntensity}} {{weatherForDay.Day.PrecipitationType}}</div>
+    <div class="Night" *ngIf="showOrNot.night">Night: {{weatherForDay.Night.PrecipitationIntensity}} {{weatherForDay.Night.PrecipitationType}}</div>
+    <div class="Temperature-limit" *ngIf="this.dayTemperature.TMinimum && this.dayTemperature.TMaximum">Temperature between: {{this.dayTemperature.TMinimum}}/{{this.dayTemperature.TMaximum}}C</div>
 </div>
