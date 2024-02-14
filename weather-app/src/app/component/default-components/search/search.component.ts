@@ -26,7 +26,8 @@ export class SearchComponent implements OnInit {
       if (this.timeStatus === 'day') {
         this.src = './../../../../assets/img/day-night/day.jpg';
       } else if (this.timeStatus === 'night') {
-        this.src = './../../../../assets/img/day-night/moonnight.jpg';
+        this.src = './../../../../assets/img/day-night/some-city.jpg';
+        // this.src = './../../../../assets/img/day-night/moonnight.jpg';
       } else {
         this.src = './../../../../assets/img/day-night/someUnknownHour.jpg';
       }
