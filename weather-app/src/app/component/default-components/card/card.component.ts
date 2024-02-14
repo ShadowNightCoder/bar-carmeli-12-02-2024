@@ -11,7 +11,7 @@ export class CardComponent implements OnInit{
   @Input() weatherForDay!: weatherForFiveDays;
 
   daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  src = ''
+  src = './../../../../assets/img/7Days/sunday.png'
   dayTemperature = {
     TMinimum: 0,
     TMaximum: 0

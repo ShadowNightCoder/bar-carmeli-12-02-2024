@@ -1,6 +1,8 @@
-.day {
+.day-card {
     width: 10em;
-    background-color: pink;
+    color: var(--primary-text-color);
+    font-size: 1.1em;
+    font-weight: 500;
 
     .weather-day-img {
         width: 100%;

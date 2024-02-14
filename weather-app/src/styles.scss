@@ -1,10 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
     margin: 0;
     box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
     width: 100%;
     height: 100%;
+    background-color: var(--primary-bg-color);
+}
+
+
+body {
+    --primary-bg-color: white;
+    --primary-text-color: black;
+    --primary-border-color: black;
+    --primary-bottom-border-color: rgba(204, 204, 204, 0.25);
+
+    &.dark {
+        --primary-bg-color: rgb(31, 31, 31);
+        --primary-text-color: rgb(229, 229, 229);
+        --primary-border-color: rgb(255, 255, 255);
+        --primary-bottom-border-color: rgba(126, 126, 126, 0.25);
+    }
 }

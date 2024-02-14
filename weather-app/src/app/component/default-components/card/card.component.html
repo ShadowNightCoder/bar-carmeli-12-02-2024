@@ -1,4 +1,11 @@
-<div class="day">
+<!-- <div class="day-card">
+    <img [src]="src" alt="day" class="weather-day-img">
+    <div class="date">15 feb 2024</div>
+    <div class="day"> Day: summry</div>
+    <div class="Night">Night: rainy</div>
+    <div class="Temperature-limit">Temperature between: 55/66C</div>
+</div> -->
+<div class="day-card">
     <img [src]="src" alt="day" class="weather-day-img">
     <div class="date">{{weatherForDay.Date | date}}</div>
     <div class="day"> Day: {{weatherForDay.Day.PrecipitationIntensity}} {{weatherForDay.Day.PrecipitationType}}</div>

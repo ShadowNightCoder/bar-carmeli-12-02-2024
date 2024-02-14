@@ -11,7 +11,9 @@ import { WeatherData } from '../../interface/fivedaysweather';
 })
 export class ApiServiceService {
 
-  apiKey = "ErMjfkk55156AY5xqiJB3xPOYTZF8QJQ"
+  // apiKey = "66zJIB9DVMGj8YEtonBIlMEQSelBt7sm"
+  // apiKey = "O7X9al4UR6GuaARJCI2MZ1rnn3fxImZ9"
+  apiKey = "dS4Iic7jmXlhGzadZZVLUUT8jIqVLXeS"
 
   constructor(private http: HttpClient) { }
 

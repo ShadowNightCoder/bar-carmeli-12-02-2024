@@ -3,8 +3,9 @@
     height: 5em;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid rgba(204, 204, 204, 0.25);
-    
+    border-bottom: 2px solid var(--primary-bottom-border-color);
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
 
     #icon {
         width: 100%;
@@ -12,13 +13,13 @@
         display: flex;
         align-items: center;
         padding-left: 1em;
-        padding-right: 4em;
+        // padding-right: 1em;
 
         img {
             width: 4em;
         }
 
-        #title{
+        #title {
             margin-left: 0.8em;
             font-size: 1.4em;
             font-weight: 700;
@@ -26,22 +27,39 @@
 
     }
 
-    .links-side{
+    #slider_and_links {
         width: 100%;
         height: 100%;
+        padding-right: 1em;
         display: flex;
         align-items: center;
-        justify-content: center;
-        
-        
+        justify-content: space-around;
 
-        a{
+
+
+
+        a {
             text-decoration: none;
             font-size: 1.2em;
             font-weight: 600;
-            color: black;
+            color: var(--primary-text-color);
             padding: 0 8%;
         }
+
+
+
+
+
+
+
+        //     .toggle {
+        //         font-size: 1.2em;
+        //         font-weight: 600;
+        //         color: var(--primary-text-color);
+        //     }
+
+
+
     }
 
 }
