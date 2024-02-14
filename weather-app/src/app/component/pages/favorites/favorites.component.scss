@@ -1,0 +1,18 @@
+.favorit-container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1em;
+
+    .favorit-title {
+        font-size: 2em;
+        font-weight: bold;
+        color: var(--primary-title); /* Blue color, you can change it to any color you like */
+        text-transform: uppercase;
+        text-decoration: underline;
+      }
+      
+}

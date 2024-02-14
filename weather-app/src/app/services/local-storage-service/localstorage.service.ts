@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { favCity } from 'src/app/interface/favoritcity';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +26,9 @@ export class LocalstorageService {
     }
   }
 
+  getLocalStorage() {
+    return this.localStorage.getItem('favoriteCities')
+  }
   // Retrieve existing data and filter out specific data
   removeLocalStorage(cityToRemove: string) {
     const existingData = localStorage.getItem('favoriteCities'); 

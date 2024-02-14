@@ -1,14 +1,36 @@
 .cityNow {
     width: 100%;
-    margin: 2em 0;
+    margin: 1em 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: var(--primary-text-color);
 
+    .card{
+        padding: 1em;
+        width: fit-content;
+        background-color: var(--primary-card-city);
+        border: 3px solid var(--primary-card-city-border);
+        border-radius: 10%;
+        font-size: 1.1em;
+        color: var(--primary-card-city-color);
+
+        .text-box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            div{
+                padding: 0.1em 0;
+            }
+        }
+    }
+
     .cityName {
-        font-size: 1.2em;
+        font-size: 1.4em;
+        text-decoration: underline 1px double var(--primary-card-city-border);
         font-weight: 500;
     }
 

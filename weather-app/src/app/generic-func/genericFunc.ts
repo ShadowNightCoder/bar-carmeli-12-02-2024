@@ -4,7 +4,7 @@ export function fahrenheitToCelsius(fahrenheit: number): number {
 }
 
 export function isEnglishLettersOnly(value: string): boolean {
-    return /^[a-zA-Z]+$/.test(value);
+    return /^[a-zA-Z\s]+$/.test(value);
 }
 
 export function dayOrNight(cityTime: string): Promise<string> {

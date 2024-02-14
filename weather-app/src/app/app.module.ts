@@ -15,6 +15,9 @@ import { CourentNameReducer } from './ngrx-store/city.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CardCityComponent } from './component/default-components/card-city/card-city.component';
+import { FavoritCityCardComponent } from './component/default-components/favorit-city-card/favorit-city-card.component';
+import { MatCardModule } from '@angular/material/card';
+
 
 
 @NgModule({
@@ -25,13 +28,15 @@ import { CardCityComponent } from './component/default-components/card-city/card
     FavoritesComponent,
     SearchComponent,
     CardComponent,
-    CardCityComponent
+    CardCityComponent,
+    FavoritCityCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatCardModule,
     MatSlideToggleModule,
     StoreModule.forRoot({
       cityName: CourentNameReducer

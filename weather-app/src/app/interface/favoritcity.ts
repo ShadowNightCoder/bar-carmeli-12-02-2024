@@ -1,4 +1,5 @@
 export interface favCity{
-    id: string,
-    name: string
+    cityID: string,
+    name: string,
+    weather: string
 }

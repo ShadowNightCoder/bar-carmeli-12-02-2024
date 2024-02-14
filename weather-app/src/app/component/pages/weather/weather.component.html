@@ -1,11 +1,11 @@
 <div id="weather-container">
   <app-search (citySelected)="getCity($event)" [cityTime]="CourentCityTime"></app-search>
-  <!-- <app-card-city [CourentCityKey]="CourentCityKey" [CourentCityName]="CourentCityName" [CourentCityTime]="CourentCityTime" [CourentCityWeatherText]="CourentCityWeatherText" [CourentCityWeatherTemperature]="CourentCityWeatherTemperature"></app-card-city>
+  <app-card-city [CourentCityKey]="CourentCityKey" [CourentCityName]="CourentCityName" [CourentCityTime]="CourentCityTime" [CourentCityWeatherText]="CourentCityWeatherText" [CourentCityWeatherTemperature]="CourentCityWeatherTemperature"></app-card-city>
   <div class="card-box">
     <div class="five-days-weather" *ngFor="let weather of weatherForFiveDays">
       <div class="card-box-child">
         <app-card [weatherForDay]="weather"></app-card>
       </div>
     </div>
-  </div> -->
+  </div>
 </div>

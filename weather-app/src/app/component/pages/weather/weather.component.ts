@@ -6,6 +6,7 @@ import { CurrentWeather } from 'src/app/interface/currentweather';
 // import { WeatherData } from 'src/app/interface/fivedaysweather';
 import { DailyForecast, WeatherData } from 'src/app/interface/fivedaysweather';
 import { weatherForFiveDays } from 'src/app/interface/weatherarray';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -25,14 +26,22 @@ export class WeatherComponent implements OnInit {
   CourentCityName = '';
   CourentCityWeatherText = '';
   CourentCityTime = '';
-  CourentCityWeatherTemperature: any = { Value: 0, Unit: 'C', UnitType: 0 };
-
+  CourentCityWeatherTemperature: any = { Value: null, Unit: 'C', UnitType: 0 };
+  defaultSearchedCity = 'tel-aviv';
+  receivedData = '';
 
   recivedData: any;
-  constructor(private weatherApi: ApiServiceService) { }
+  constructor(private weatherApi: ApiServiceService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      if(params['key']){
+        console.log("recived data from redirect is: " + params['key'])
+        this.defaultSearchedCity = params['key'];
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.getCity("tel-aviv");
+    this.getCity(this.defaultSearchedCity);
   }
 
 
@@ -56,6 +65,7 @@ export class WeatherComponent implements OnInit {
             this.CourentCityName = city.LocalizedName;
             this.getCityCurrentWeather(city.Key)
             this.getFiveDaysForecast(city.Key)
+            break;
           }
         },
         error: (error) => { error.message }
@@ -95,23 +105,23 @@ export class WeatherComponent implements OnInit {
           Date: forecast.Date,
           Temperature: {
             Minimum: {
-                Value: forecast.Temperature.Minimum.Value,
-                Unit: forecast.Temperature.Minimum.Unit,
+              Value: forecast.Temperature.Minimum.Value,
+              Unit: forecast.Temperature.Minimum.Unit,
             },
             Maximum: {
-                Value: forecast.Temperature.Maximum.Value,
-                Unit: forecast.Temperature.Maximum.Unit,
+              Value: forecast.Temperature.Maximum.Value,
+              Unit: forecast.Temperature.Maximum.Unit,
             }
-        },
+          },
           Day: {
-              PrecipitationIntensity: forecast.Day.PrecipitationIntensity,
-              PrecipitationType: forecast.Day.PrecipitationType
+            PrecipitationIntensity: forecast.Day.PrecipitationIntensity,
+            PrecipitationType: forecast.Day.PrecipitationType
           },
           Night: {
-              PrecipitationIntensity: forecast.Night.PrecipitationIntensity,
-              PrecipitationType: forecast.Night.PrecipitationType
+            PrecipitationIntensity: forecast.Night.PrecipitationIntensity,
+            PrecipitationType: forecast.Night.PrecipitationType
           }
-      };
+        };
         // console.log("i will show you the day now! " + forecast.Day)
         this.weatherForFiveDays.push(forecast1);
         // console.log(forecast);

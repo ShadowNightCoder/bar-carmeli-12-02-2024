@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
       }
     })
 
-    
+
 
     // this.timeStatus = dayOrNight(this.cityTime)
     // if (this.timeStatus === 'day') {
@@ -47,24 +47,28 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit(CityInput: string) {
-    if(CityInput){
-      if(isEnglishLettersOnly(CityInput)){
-      this.badInput= false;
-      this.errorShow = "You entered invalid input. Please only enter English letters!"
+    console.log("the city is now that you search: " + CityInput)
+    if (CityInput) {
+      console.log("wrong and bad input bar fix " + isEnglishLettersOnly(CityInput))
+      if (isEnglishLettersOnly(CityInput)) {
+        console.log("good input bar go for it")
+        this.badInput = false;
+        this.citySelected.emit(CityInput); // Emit the city data    
+      }
+      else {
+        console.log("wrong and bad iheheheh ")
+        this.badInput = true;
+        this.errorShow = "You entered invalid input. Please only enter English letters!"     
+      }
+      this.CityInput.nativeElement.value = '';
     }
-    else{
-      this.badInput= true;
-      this.citySelected.emit(CityInput); // Emit the city data
-    }
-    this.CityInput.nativeElement.value = '';
-    }
-    else{
+    else {
       this.errorShow = "You Didnt Entred Anything In Search!"
     }
-    
+
   }
 
 
-  
+
 
 }

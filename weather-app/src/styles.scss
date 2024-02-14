@@ -17,11 +17,29 @@ body {
     --primary-text-color: black;
     --primary-border-color: black;
     --primary-bottom-border-color: rgba(204, 204, 204, 0.25);
+    --primary-card: #f5f5f5;
+    --primary-title: #00254d;
+
+    --primary-card-city: rgb(196, 196, 196);
+    --primary-card-city-border: rgb(45, 45, 45);
+    --primary-card-city-color: rgb(70, 70, 70);
+
+    --primary-button-add: rgb(0, 132, 232);
+    --primary-button-remove: rgb(222, 0, 0);
 
     &.dark {
         --primary-bg-color: rgb(31, 31, 31);
         --primary-text-color: rgb(229, 229, 229);
         --primary-border-color: rgb(255, 255, 255);
         --primary-bottom-border-color: rgba(126, 126, 126, 0.25);
+        --primary-card: #989898;
+        --primary-title: rgb(101, 101, 200);
+
+        --primary-card-city: rgb(74, 74, 74);
+        --primary-card-city-border: rgb(202, 202, 202);
+        --primary-card-city-color: rgb(186, 186, 186);
+        
+        --primary-button-add: rgb(0, 95, 167);
+        --primary-button-remove: rgb(184, 0, 0);
     }
 }
