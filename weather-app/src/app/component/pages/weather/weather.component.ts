@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { CitiesData } from 'src/app/interface/citiesinfo';
 import { CurrentWeather } from 'src/app/interface/currentweather';
 // import { WeatherData } from 'src/app/interface/fivedaysweather';
 import { DailyForecast, WeatherData } from 'src/app/interface/fivedaysweather';
 import { weatherForFiveDays } from 'src/app/interface/weatherarray';
 import { ActivatedRoute } from '@angular/router';
+import { throwError } from 'rxjs';
+import { ErrorHandlerService } from 'src/app/services/error-service/error-handler.service';
 
 
 @Component({
@@ -31,7 +33,7 @@ export class WeatherComponent implements OnInit {
   receivedData = '';
 
   recivedData: any;
-  constructor(private weatherApi: ApiServiceService, private route: ActivatedRoute) {
+  constructor(private weatherApi: ApiServiceService, private route: ActivatedRoute, private ErrorDialog: ErrorHandlerService) {
     this.route.queryParams.subscribe(params => {
       if(params['key']){
         console.log("recived data from redirect is: " + params['key'])
@@ -44,6 +46,8 @@ export class WeatherComponent implements OnInit {
     this.getCity(this.defaultSearchedCity);
   }
 
+  
+  
 
 
   getCity(cityName: string) {
@@ -68,7 +72,7 @@ export class WeatherComponent implements OnInit {
             break;
           }
         },
-        error: (error) => { error.message }
+        error: () => {  this.ErrorDialog.showErrorDialog('An error occurred while fetching city information.'); }
       },
       )
   }
@@ -87,7 +91,7 @@ export class WeatherComponent implements OnInit {
           this.CourentCityTime = city.LocalObservationDateTime;
         }
       },
-      error: (error) => { error.message }
+      error: () => {  this.ErrorDialog.showErrorDialog('An error occurred while fetching City Current Weather information.'); }
     },
     )
   }
@@ -97,9 +101,11 @@ export class WeatherComponent implements OnInit {
   getFiveDaysForecast(Locationkey: string) {
     console.log(Locationkey)
     this.weatherForFiveDays = []; //i dont want to add the city weather with more citys so i make sure for every request i add i delete what was in the array
-    this.weatherApi.getCityDailyForecasts(Locationkey).subscribe(response => {
-      // const { Headline: { Text: WeatherData } } = response;
-      // console.log(WeatherData);
+    this.weatherApi.getCityDailyForecasts(Locationkey).pipe(
+      catchError(() => {
+        this.ErrorDialog.showErrorDialog('An error occurred while getting five days forecast.');
+        return throwError('Failed to retrieve five days forecast. Please try again later.');
+      })).subscribe(response => {
       response.DailyForecasts.forEach((forecast: DailyForecast) => {
         const forecast1: weatherForFiveDays = {
           Date: forecast.Date,
@@ -130,17 +136,3 @@ export class WeatherComponent implements OnInit {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

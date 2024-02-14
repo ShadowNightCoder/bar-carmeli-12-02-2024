@@ -17,6 +17,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CardCityComponent } from './component/default-components/card-city/card-city.component';
 import { FavoritCityCardComponent } from './component/default-components/favorit-city-card/favorit-city-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { ErrorDialogComponent } from './component/default-components/error-dialog/error-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -29,7 +31,8 @@ import { MatCardModule } from '@angular/material/card';
     SearchComponent,
     CardComponent,
     CardCityComponent,
-    FavoritCityCardComponent
+    FavoritCityCardComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { MatCardModule } from '@angular/material/card';
     HttpClientModule,
     FormsModule,
     MatCardModule,
+    MatDialogModule,
     MatSlideToggleModule,
     StoreModule.forRoot({
       cityName: CourentNameReducer

@@ -27,19 +27,70 @@ body {
     --primary-button-add: rgb(0, 132, 232);
     --primary-button-remove: rgb(222, 0, 0);
 
+    --primary-scrollbar-thumb: #888;
+    --primary-scrollbar-track: #f1f1f1;
+
     &.dark {
         --primary-bg-color: rgb(31, 31, 31);
         --primary-text-color: rgb(229, 229, 229);
         --primary-border-color: rgb(255, 255, 255);
         --primary-bottom-border-color: rgba(126, 126, 126, 0.25);
         --primary-card: #989898;
-        --primary-title: rgb(101, 101, 200);
+        --primary-title: rgb(84, 150, 200);
 
         --primary-card-city: rgb(74, 74, 74);
         --primary-card-city-border: rgb(202, 202, 202);
         --primary-card-city-color: rgb(186, 186, 186);
-        
+
         --primary-button-add: rgb(0, 95, 167);
         --primary-button-remove: rgb(184, 0, 0);
+
+        --primary-scrollbar-thumb: #f8f8f8;
+        --primary-scrollbar-track: #666666;
     }
+
+
+}
+
+
+/* WebKit browsers (Chrome, Safari) */
+/* Width and height of the scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Thumb of the scrollbar */
+::-webkit-scrollbar-thumb {
+    background: var(--primary-scrollbar-thumb);
+    /* Color of the thumb */
+    border-radius: 5px;
+    /* Rounded corners */
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+    background: var(--primary-scrollbar-track);
+    /* Color of the track */
+}
+
+/* Firefox */
+/* Width and height of the scrollbar */
+::-moz-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Thumb of the scrollbar */
+::-moz-scrollbar-thumb {
+    background: --primary-scrollbar-thum;
+    /* Color of the thumb */
+    border-radius: 5px;
+    /* Rounded corners */
+}
+
+/* Track of the scrollbar */
+::-moz-scrollbar-track {
+    background: --primary-scrollbar-track;
+    /* Color of the track */
 }
