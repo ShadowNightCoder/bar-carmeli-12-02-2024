@@ -3,6 +3,7 @@ import { ApiServiceService } from '../api-service/api-service.service';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { CurrentWeather } from 'src/app/interface/currentweather';
 import { ErrorHandlerService } from '../error-service/error-handler.service';
+import { CitiesData } from 'src/app/interface/citiesinfo';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class RequestServiceService {
 
   getCity(cityName: string): Observable<any[]> {
     return this.weatherApi.getCityInfo(cityName).pipe(
-      map((res: any[]) => {
+      map((res: CitiesData[]) => {
         return res.map(city => ({
           key: city.Key,
           name: city.LocalizedName,
@@ -32,7 +33,7 @@ export class RequestServiceService {
 
   getCityCurrentWeather(Locationkey: string): Observable<any[]> {
     return this.weatherApi.getCityWeather(Locationkey).pipe(
-      map((res: any[]) => {
+      map((res: CurrentWeather[]) => {
         return res.map(city => ({
           cityWeatherText: city.WeatherText,
           cityWeatherDate: city.LocalObservationDateTime,

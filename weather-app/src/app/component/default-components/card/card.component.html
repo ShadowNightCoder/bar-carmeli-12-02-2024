@@ -10,5 +10,5 @@
     <div class="date" *ngIf="showOrNot.date">{{weatherForDay.Date | date}}</div>
     <div class="day" *ngIf="showOrNot.day"> Day: {{weatherForDay.Day.PrecipitationIntensity}} {{weatherForDay.Day.PrecipitationType}}</div>
     <div class="Night" *ngIf="showOrNot.night">Night: {{weatherForDay.Night.PrecipitationIntensity}} {{weatherForDay.Night.PrecipitationType}}</div>
-    <div class="Temperature-limit" *ngIf="this.dayTemperature.TMinimum && this.dayTemperature.TMaximum">Temperature between: {{this.dayTemperature.TMinimum}}/{{this.dayTemperature.TMaximum}}C</div>
+    <div class="Temperature-limit" *ngIf="this.showOrNot.temp">Temperature between: {{weatherForDay.Temperature.Minimum.Value}}/{{weatherForDay.Temperature.Maximum.Value}} {{defaultTemperature}}</div>
 </div>

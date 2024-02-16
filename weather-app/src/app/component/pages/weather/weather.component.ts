@@ -25,9 +25,10 @@ export class WeatherComponent implements OnInit {
   fiveDaysForecastArray: weatherForFiveDays[] = [];
   wantendCity: any[] = [];
   defaultSearchedCity = 'Tel Aviv';
+;
 
 
-  recivedData: any;
+  
   constructor(private route: ActivatedRoute, private request: RequestServiceService) {
     this.route.queryParams.subscribe(params => {
       if (params['key']) {

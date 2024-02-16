@@ -94,3 +94,7 @@ body {
     background: --primary-scrollbar-track;
     /* Color of the track */
 }
+
+.mdc-switch__ripple{
+    left: 0 !important;
+}

@@ -1,14 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { celsiusToFahrenheit, fahrenheitToCelsius } from 'src/app/generic-func/genericFunc';
 import { CurrentCity } from 'src/app/interface/courentcity';
 import { favCity } from 'src/app/interface/favoritcity';
 import { LocalstorageService } from 'src/app/services/local-storage-service/localstorage.service';
+import { CelsiusfahrenheitServiceService } from 'src/app/services/toggle-button-service/celsiusfahrenheit-service.service';
 
 @Component({
   selector: 'app-card-city',
   templateUrl: './card-city.component.html',
   styleUrls: ['./card-city.component.scss']
 })
-export class CardCityComponent {
+export class CardCityComponent implements OnInit {
   @Input() CourentCityKey = '';
   @Input() CourentCityName = '';
   @Input() CityInfo: CurrentCity = {
@@ -21,22 +24,52 @@ export class CardCityComponent {
       unitType: 0
     }
   };
-
-
-
-  @Input() CourentCityTime = '';
-  @Input() CourentCityWeatherText = '';
-
-  @Input() CourentCityWeatherTemperature: any = { Value: 0, Unit: 'C', UnitType: 0 };
   favoritCityList: favCity[] = [];
+  subscription: Subscription | undefined;
+  booleanValue: boolean = true;
+  isActive: boolean = false;
 
-  constructor(private storage: LocalstorageService){}
+  constructor(private storage: LocalstorageService, private celsiusFahrenheitService: CelsiusfahrenheitServiceService) { }
 
-  addCity() {
-    this.storage.setLocalStorage(this.CourentCityName)
+  ngOnInit(): void {
+    this.subscription = this.celsiusFahrenheitService.booleanValueSubject.subscribe(value => {
+      this.booleanValue = value;
+      this.convertTemperature();
+    });
+
+    this.heartStatus()
   }
 
-  removeCity(){
-    this.storage.removeLocalStorage(this.CourentCityName)
+  convertTemperature() {
+    if (this.CityInfo.temperatureImperial.value !== null) {
+      const value = parseFloat(this.CityInfo.temperatureImperial.value.toString());
+      try {
+        this.CityInfo.temperatureImperial.unit = this.booleanValue ? 'F' : 'C';
+        this.CityInfo.temperatureImperial.value = this.booleanValue ? celsiusToFahrenheit(value) : fahrenheitToCelsius(value);
+      } catch (error) {
+        console.error('Error converting temperature:', error);
+      }
+    }
   }
+
+  heartStatus(){
+    if(this.storage.getIsCityInLocalStorage(this.CourentCityName)){
+      this.isActive = true;
+    }else{
+      this.isActive = false;
+    }
+  }
+
+  addAndRemoveCity() {
+    if(this.isActive === true){
+      this.storage.removeLocalStorage(this.CourentCityName)
+    }
+    else if(this.isActive === false){
+      this.storage.setLocalStorage(this.CourentCityName)
+    }
+    
+    this.isActive = !this.isActive;
+  }
+
+
 }

@@ -26,9 +26,19 @@ export class LocalstorageService {
     }
   }
 
+
+
   getLocalStorage() {
     return this.localStorage.getItem('favoriteCities')
   }
+
+
+  getIsCityInLocalStorage(cityName: string){
+    const existingData = localStorage.getItem('favoriteCities'); 
+    return existingData?.split(',').includes(cityName);
+  }
+
+
   // Retrieve existing data and filter out specific data
   removeLocalStorage(cityToRemove: string) {
     const existingData = localStorage.getItem('favoriteCities'); 

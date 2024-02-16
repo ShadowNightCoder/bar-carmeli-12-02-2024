@@ -14,11 +14,6 @@ export class FavoritCityCardComponent {
     name: '',
     weather: ''
   };
-  
-  @Input() CourentCityKey = '';
-  @Input() CourentCityName = '';
-  @Input() CourentCityWeatherText = '';
-
   dataToSend = {};
 
   constructor(private router: Router){}

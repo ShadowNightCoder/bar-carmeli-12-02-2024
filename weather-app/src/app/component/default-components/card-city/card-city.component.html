@@ -1,6 +1,11 @@
 <div class="cityNow">
     <div class="card">
         <div class="text-box">
+
+            <div class="switch-button" [ngClass]="{'active': isActive}" (click)="addAndRemoveCity()">
+                <i class="heart-icon" [ngClass]="{'fas': isActive, 'far': !isActive, 'fa-heart': true}"></i>
+            </div>
+
             <div class="cityName" *ngIf="CourentCityName">{{CourentCityName}}</div>
             <div class="cityTimeNow" *ngIf="CityInfo.timeRightNow">{{CityInfo.timeRightNow| date:'HH:mm'}}</div>
             <div class="cityWeather" *ngIf="CityInfo.weatherText">{{CityInfo.weatherText}}</div>
@@ -9,9 +14,9 @@
                 {{CityInfo.temperatureImperial.value}} {{CityInfo.temperatureImperial.unit}}
             </div>
         </div>
-        <div class="buttons">
+        <!-- <div class="buttons">
             <button type="button" class="btn Add-City" (click)="addCity()">Add To Favorit</button>
             <button type="button" class="btn Remove-City" (click)="removeCity()">remove From Favorit</button>
-        </div>
+        </div> -->
     </div>
 </div>

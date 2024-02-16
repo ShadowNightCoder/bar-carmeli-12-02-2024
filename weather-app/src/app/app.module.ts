@@ -13,14 +13,17 @@ import { CardComponent } from './component/default-components/card/card.componen
 import { StoreModule } from '@ngrx/store';
 import { CourentNameReducer } from './ngrx-store/city.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CardCityComponent } from './component/default-components/card-city/card-city.component';
 import { FavoritCityCardComponent } from './component/default-components/favorit-city-card/favorit-city-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { ErrorDialogComponent } from './component/default-components/error-dialog/error-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ToggleButtonComponent } from './component/default-components/toggle-button/toggle-button.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -35,7 +38,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     CardComponent,
     CardCityComponent,
     FavoritCityCardComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ToggleButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -45,12 +49,14 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatCardModule,
     MatDialogModule,
     MatInputModule,
+    MatButtonToggleModule,
     MatAutocompleteModule,
     MatSlideToggleModule,
     StoreModule.forRoot({
       cityName: CourentNameReducer
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

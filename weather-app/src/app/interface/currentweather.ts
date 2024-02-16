@@ -3,7 +3,7 @@ export interface CurrentWeather {
   WeatherText: string;
   WeatherIcon: number;
   Temperature: {
-    Metric: {
+    Imperial: {
       Value: number;
       Unit: string;
     };

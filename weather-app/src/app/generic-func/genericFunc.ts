@@ -3,6 +3,11 @@ export function fahrenheitToCelsius(fahrenheit: number): number {
     return parseFloat(((fahrenheit - 32) * 5 / 9).toFixed(1));
 }
 
+export function celsiusToFahrenheit(celsius: number): number {
+    return parseFloat(((celsius * 9 / 5) + 32).toFixed(1));
+}
+
+
 export function isEnglishLettersOnly(value: string): boolean {
     return /^[a-zA-Z\s]+$/.test(value);
 }

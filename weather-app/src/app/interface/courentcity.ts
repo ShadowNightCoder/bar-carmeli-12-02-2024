@@ -3,7 +3,7 @@ export interface CurrentCity {
     timeRightNow: string;
     weatherIcon: string;
     temperatureImperial: {
-        value: number | null | string; // Allow null or string types
+        value: number | null | string;
         unit: string;
         unitType: number;
 

@@ -60,3 +60,27 @@ export interface WeatherData {
   };
   DailyForecasts: DailyForecast[];
 }
+
+
+export interface FiveDaysForecast{
+  Date: string;
+  Temperature: {
+      Minimum: {
+          Value: number;
+          Unit: string;
+      };
+      Maximum: {
+          Value: number;
+          Unit: string;
+      };
+  };
+  Day: {
+      PrecipitationIntensity: string;
+      PrecipitationType: string;
+  };
+  Night: {
+      PrecipitationIntensity: string;
+      PrecipitationType: string;
+  };
+
+}
