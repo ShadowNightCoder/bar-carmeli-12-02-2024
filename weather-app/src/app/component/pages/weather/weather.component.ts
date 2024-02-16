@@ -39,7 +39,7 @@ export class WeatherComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.reciveCity(this.defaultSearchedCity);
+    this.reciveCity(this.defaultSearchedCity);
   }
 
 

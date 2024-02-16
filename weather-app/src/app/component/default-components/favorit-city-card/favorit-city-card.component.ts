@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { favCity } from 'src/app/interface/favoritcity';
 
 
 @Component({
@@ -8,6 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./favorit-city-card.component.scss']
 })
 export class FavoritCityCardComponent {
+  @Input() favCity: favCity ={
+    cityid: '',
+    name: '',
+    weather: ''
+  };
+  
   @Input() CourentCityKey = '';
   @Input() CourentCityName = '';
   @Input() CourentCityWeatherText = '';
@@ -17,7 +24,7 @@ export class FavoritCityCardComponent {
   constructor(private router: Router){}
 
   sendToHome(){
-    this.dataToSend = { key: this.CourentCityName };
+    this.dataToSend = { key: this.favCity.name };
     this.router.navigate(['/home'], { queryParams: this.dataToSend });
   }
 }

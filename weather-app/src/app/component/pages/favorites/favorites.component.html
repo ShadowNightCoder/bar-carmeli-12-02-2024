@@ -2,7 +2,7 @@
     <div class="favorit-title">Favorit Cites</div>
     <div class="favorit-list">
         <div class="city" *ngFor="let city of favoritCityList">
-            <app-favorit-city-card [CourentCityName]="city.name" [CourentCityWeatherText]="city.weather" [CourentCityKey]="city.cityID"></app-favorit-city-card>
+            <app-favorit-city-card [favCity]="city"></app-favorit-city-card>
         </div>
     </div>
 </div>

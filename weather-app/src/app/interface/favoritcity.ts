@@ -1,5 +1,5 @@
 export interface favCity{
-    cityID: string,
+    cityid: string,
     name: string,
     weather: string
 }
