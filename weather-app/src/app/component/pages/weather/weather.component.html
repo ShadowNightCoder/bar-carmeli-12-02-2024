@@ -1,10 +1,10 @@
 <div id="weather-container">
-  <app-search (citySelected)="getCity($event)" [cityTime]="CourentCityTime"></app-search>
-  <app-card-city [CourentCityKey]="CourentCityKey" [CourentCityName]="CourentCityName" [CourentCityTime]="CourentCityTime" [CourentCityWeatherText]="CourentCityWeatherText" [CourentCityWeatherTemperature]="CourentCityWeatherTemperature"></app-card-city>
+  <app-search (citySelected)="reciveCityCurrentWeather($event.cityKey, $event.cityName)" [cityTime]="CourentCityName"></app-search>
+  <app-card-city [CourentCityKey]="CourentCityKey" [CourentCityName]="CourentCityName" [CityInfo]="CourentCity"></app-card-city>
   <div class="card-box">
-    <div class="five-days-weather" *ngFor="let weather of weatherForFiveDays">
+    <div class="five-days-weather" *ngFor="let weatherDay of fiveDaysForecastArray">
       <div class="card-box-child">
-        <app-card [weatherForDay]="weather"></app-card>
+        <app-card [weatherForDay]="weatherDay"></app-card>
       </div>
     </div>
   </div>

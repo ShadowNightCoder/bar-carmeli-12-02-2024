@@ -12,7 +12,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ApiServiceService {
 
-  apiKey = "yDGKEKhnAZ9bGADdxgioOoWph6Bk2UC5"
+  apiKey = "zoiVkMJObw9zGP2dWrA0zbjMMGMMKkYK"
 
   baseUrl = "http://dataservice.accuweather.com";
 
@@ -34,7 +34,7 @@ export class ApiServiceService {
 
   // Returns an array of daily forecasts for the next 5 days for a specific location
   getCityDailyForecasts(locationKey: string) {
-    return this.http.get<WeatherData>(`${this.baseUrl}/forecasts/v1/daily/5day/${locationKey}?apikey=${this.apiKey}`).pipe(
+    return this.http.get<WeatherData[]>(`${this.baseUrl}/forecasts/v1/daily/5day/${locationKey}?apikey=${this.apiKey}`).pipe(
       catchError(this.handleError)
     );
   }

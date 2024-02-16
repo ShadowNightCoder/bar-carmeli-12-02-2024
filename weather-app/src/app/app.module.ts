@@ -19,6 +19,9 @@ import { FavoritCityCardComponent } from './component/default-components/favorit
 import { MatCardModule } from '@angular/material/card';
 import { ErrorDialogComponent } from './component/default-components/error-dialog/error-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 
@@ -41,6 +44,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatCardModule,
     MatDialogModule,
+    MatInputModule,
+    MatAutocompleteModule,
     MatSlideToggleModule,
     StoreModule.forRoot({
       cityName: CourentNameReducer

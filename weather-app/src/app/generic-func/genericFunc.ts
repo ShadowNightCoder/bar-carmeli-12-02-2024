@@ -11,15 +11,15 @@ export function dayOrNight(cityTime: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
         const time = new Date(cityTime);
         const hour = time.getHours();
-        console.log("the houre is:::: " + cityTime)
-        console.log("the houre is:::: " + time)
+        // console.log("the houre is:::: " + cityTime)
+        // console.log("the houre is:::: " + time)
 
         if (hour >= 5 && hour < 20) {
             resolve("day");
-            console.log("just a day???")
+            // console.log("just a day???")
         } else {
             resolve("night");
-            console.log("just a night??????")
+            // console.log("just a night??????")
         }
     });
 }

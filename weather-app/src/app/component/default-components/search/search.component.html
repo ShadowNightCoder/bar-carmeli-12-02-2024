@@ -3,9 +3,26 @@
     <div class="search">
         <div class="col-xs-5 size-max">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search City" #CityInput pattern="[a-zA-Z ]+">
+                <!-- <input type="text" class="form-control" placeholder="Search City" #CityInput [(ngModel)]="inputLive"> -->
+                <!-- <input type="text" class="form-control" placeholder="Search City" (input)="autoComplete()" [(ngModel)]="inputLive"> -->
+
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Search City" [matAutocomplete]="auto" (input)="autoComplete()" [(ngModel)]="inputLive">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let city of cityList" [value]="city.name" (onSelectionChange)="onOptionSelected(city)">
+                            {{city.name}} of {{city.country}}
+                        </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                
+
+
                 <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit" (click)="onSubmit(CityInput.value);"  >
+                    <button class="btn btn-default" type="submit" (click)="onSubmit();" [disabled]="!optionSelected">
+
+
+                    <!-- <button class="btn btn-default" type="submit" (click)="onSubmit(CityInput.value);"> -->
                         <i class="glyphicon glyphicon-search"></i>
                     </button>
                 </div>
