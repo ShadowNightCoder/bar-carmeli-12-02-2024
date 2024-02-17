@@ -1,8 +1,5 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
-import { Observable, catchError, map, throwError } from 'rxjs';
-import { dayOrNight, isEnglishLettersOnly } from 'src/app/generic-func/genericFunc';
-import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
-import { ErrorHandlerService } from 'src/app/services/error-service/error-handler.service';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { isEnglishLettersOnly } from 'src/app/generic-func/genericFunc';
 import { RequestServiceService } from 'src/app/services/recived-data-service/request-service.service';
 
 @Component({
@@ -32,18 +29,7 @@ export class SearchComponent implements OnInit {
 
 
   ngOnInit(): void {
-    dayOrNight(this.cityTime).then((timeStatus) => {
-      // console.log("its a " + timeStatus)
-      this.timeStatus = timeStatus;
-      if (this.timeStatus === 'day') {
-        this.src = './../../../../assets/img/day-night/day.jpg';
-      } else if (this.timeStatus === 'night') {
-        this.src = './../../../../assets/img/day-night/some-city.jpg';
-        // this.src = './../../../../assets/img/day-night/moonnight.jpg';
-      } else {
-        this.src = './../../../../assets/img/day-night/someUnknownHour.jpg';
-      }
-    })
+   
   }
 
 
@@ -60,10 +46,8 @@ export class SearchComponent implements OnInit {
     this.inputEnglishOnley = isEnglishLettersOnly(this.inputLive)
     if (this.inputEnglishOnley) {
       this.badInput = false;
-      console.log(this.inputLive)
       this.request.getCity(this.inputLive).subscribe((citiesInfoArray: any[]) => {
         this.cityList = citiesInfoArray;
-        console.log(this.cityList)
       })
     }
     else if (!this.inputEnglishOnley) {

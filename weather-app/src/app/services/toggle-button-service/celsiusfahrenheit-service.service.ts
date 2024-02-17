@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class CelsiusfahrenheitServiceService {
   booleanValue: boolean = true;
   booleanValueSubject: Subject<boolean> = new Subject<boolean>();
+  refreshTheButton: Subject<boolean> = new Subject<boolean>();
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class CelsiusfahrenheitServiceService {
       this.booleanValue = false;
     }
     this.booleanValueSubject.next(this.booleanValue); 
+  }
 
+  
+  refreshButton(value: boolean){
+    this.refreshTheButton.next(value);
   }
 }

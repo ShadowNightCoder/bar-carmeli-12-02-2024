@@ -14,7 +14,6 @@
         align-items: center;
         padding-left: 1em;
 
-
         img {
             width: 4em;
         }
@@ -24,7 +23,6 @@
             font-size: 1.4em;
             font-weight: 700;
         }
-
     }
 
     #slider_and_links {
@@ -35,9 +33,6 @@
         align-items: center;
         justify-content: space-around;
 
-
-
-
         a {
             text-decoration: none;
             font-size: 1.2em;
@@ -45,21 +40,5 @@
             color: var(--primary-text-color);
             padding: 0 8%;
         }
-
-
-
-
-
-
-
-        //     .toggle {
-        //         font-size: 1.2em;
-        //         font-weight: 600;
-        //         color: var(--primary-text-color);
-        //     }
-
-
-
     }
-
 }

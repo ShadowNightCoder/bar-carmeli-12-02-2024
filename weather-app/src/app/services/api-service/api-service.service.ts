@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CitiesData } from '../../interface/citiesinfo';
 import { CurrentWeather } from '../../interface/currentweather';
-// import { CityFiveDaysWether } from '../interface/fivedaysweather';
-// import { WeatherData } from '../interface/fivedaysweather';
 import { WeatherData } from '../../interface/fivedaysweather';
 import { catchError, throwError } from 'rxjs';
 
@@ -12,8 +10,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ApiServiceService {
 
-  apiKey = "ugK44YqqPI98iyPe5Bii1LgDOTfOOJtX"
-
+  apiKey = "6iyiIAWnycjTKVvX3Apa5lLhGQuHmJSX"
   baseUrl = "http://dataservice.accuweather.com";
 
   constructor(private http: HttpClient) { }
@@ -41,15 +38,14 @@ export class ApiServiceService {
 
 
   private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) { // Client-side error
+    if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message); 
     } 
-    else { // Server-side error
+    else {
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`); 
     }
-    // Return an observable with a user-facing error message
     return throwError('Something went wrong, Please try again later');
   }
 }

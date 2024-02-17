@@ -38,10 +38,14 @@
     .error_wrong_input {
         text-align: center;
         border-radius: 5px;
-        // background-color: white;
         color: var(--primary-worning);
         font-size: 1.3em;
         font-weight: 600;
         text-decoration: underline var(--primary-text-color) 2px;
     }
+}
+
+
+.btn-default:focus {
+    outline: none;
 }

@@ -56,7 +56,12 @@ export class CardCityComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
       if(changes['CourentCityName'].previousValue != changes['CourentCityName'].currentValue && changes['CourentCityName'].currentValue != undefined){
         this.heartStatus()
+        if(changes['CourentCityName'].previousValue != ''){
+          this.celsiusFahrenheitService.refreshButton(true);
+        }
       }
+
+      
   }
 
   heartStatus(){

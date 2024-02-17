@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
 import { weatherForFiveDays } from 'src/app/interface/weatherarray';
 import { ActivatedRoute } from '@angular/router';
-import { ErrorHandlerService } from 'src/app/services/error-service/error-handler.service';
 import { RequestServiceService } from 'src/app/services/recived-data-service/request-service.service';
 import { CurrentCity } from 'src/app/interface/courentcity';
 
@@ -32,7 +30,6 @@ export class WeatherComponent implements OnInit {
   constructor(private route: ActivatedRoute, private request: RequestServiceService) {
     this.route.queryParams.subscribe(params => {
       if (params['key']) {
-        console.log("recived data from redirect is: " + params['key'])
         this.defaultSearchedCity = params['key'];
       }
     });
@@ -77,7 +74,6 @@ export class WeatherComponent implements OnInit {
   getFiveDaysForecast(Locationkey: string) {
     this.request.getFiveDaysForecast(Locationkey).subscribe((currentCity: any) => {
       this.fiveDaysForecastArray = currentCity;
-      console.log(this.fiveDaysForecastArray)
     });
   }
 }

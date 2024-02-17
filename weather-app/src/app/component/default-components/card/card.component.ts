@@ -18,6 +18,7 @@ export class CardComponent implements OnInit {
   src = './../../../../assets/img/7Days/sunday.png'
   showOrNot: any = {};
 
+
   updateShowOrNot(): void {
     this.showOrNot = {
       date: this.weatherForDay.Date,
@@ -29,6 +30,7 @@ export class CardComponent implements OnInit {
 
   constructor(private celsiusFahrenheitService: CelsiusfahrenheitServiceService) { }
 
+  
   ngOnInit(): void {
     this.updateShowOrNot();
     const date = new Date(this.weatherForDay.Date);
@@ -39,16 +41,6 @@ export class CardComponent implements OnInit {
       this.booleanValue = value;
       this.convertTemperature();
     });
-
-
-
-
-    // if(this.weatherForDay.Temperature.Minimum.Unit === 'F'){
-    // this.dayTemperature.TMinimum = fahrenheitToCelsius(this.weatherForDay.Temperature.Minimum.Value.valueOf());
-    // }
-    // if(this.weatherForDay.Temperature.Maximum.Unit === 'F'){
-    // this.dayTemperature.TMaximum = fahrenheitToCelsius(this.weatherForDay.Temperature.Maximum.Value.valueOf());
-    // }
   }
 
 

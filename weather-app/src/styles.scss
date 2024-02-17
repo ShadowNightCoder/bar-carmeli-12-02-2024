@@ -34,6 +34,9 @@ body {
 
     --primary-search-bg: whitesmoke;
 
+    --primary-mat-button-toggle-appearance: #fff;
+    --primary-mat-button-toggle-checked: #e0e0e0;
+
     &.dark {
         --primary-bg-color: rgb(31, 31, 31);
         --primary-text-color: rgb(229, 229, 229);
@@ -55,6 +58,9 @@ body {
         --primary-worning: rgb(255, 139, 139);
 
         --primary-search-bg: rgb(174, 174, 174);
+
+        --primary-mat-button-toggle-appearance: #999999;
+        --primary-mat-button-toggle-checked: #464646;
     }
 
 

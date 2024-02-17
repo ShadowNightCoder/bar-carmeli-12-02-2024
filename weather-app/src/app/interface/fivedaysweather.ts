@@ -1,19 +1,3 @@
-// interface Headline {
-//   EffectiveDate: string;
-//   EffectiveEpochDate: number;
-//   Severity: number;
-//   Text: string;
-//   Category: string;
-//   EndDate: string;
-//   EndEpochDate: number;
-//   MobileLink: string;
-//   Link: string;
-// }
-
-// export interface WeatherData {
-//   Headline: Headline;
-// }
-
 interface Temperature {
   Minimum: {
     Value: number;

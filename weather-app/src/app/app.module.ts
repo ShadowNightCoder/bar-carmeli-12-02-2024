@@ -10,8 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './component/default-components/search/search.component';
 import { CardComponent } from './component/default-components/card/card.component';
-import { StoreModule } from '@ngrx/store';
-import { CourentNameReducer } from './ngrx-store/city.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CardCityComponent } from './component/default-components/card-city/card-city.component';
@@ -52,9 +50,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatButtonToggleModule,
     MatAutocompleteModule,
     MatSlideToggleModule,
-    StoreModule.forRoot({
-      cityName: CourentNameReducer
-    }),
     BrowserAnimationsModule,
     FontAwesomeModule
   ],
