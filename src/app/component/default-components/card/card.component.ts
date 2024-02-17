@@ -15,7 +15,7 @@ export class CardComponent implements OnInit {
   subscription: Subscription | undefined;
   booleanValue: boolean = true;
   daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  src = './../../../../assets/img/7Days/sunday.png'
+  src = './assets/img/7Days/sunday.png'
   showOrNot: any = {};
 
 
@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
     this.updateShowOrNot();
     const date = new Date(this.weatherForDay.Date);
     const dayIndex = date.getDay();
-    this.src = "./../../../../assets/img/7Days/" + this.daysOfWeek[dayIndex] + ".png"
+    this.src = "./assets/img/7Days/" + this.daysOfWeek[dayIndex] + ".png"
 
     this.subscription = this.celsiusFahrenheitService.booleanValueSubject.subscribe(value => {
       this.booleanValue = value;
