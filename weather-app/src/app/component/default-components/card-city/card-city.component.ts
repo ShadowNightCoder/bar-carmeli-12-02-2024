@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { celsiusToFahrenheit, fahrenheitToCelsius } from 'src/app/generic-func/genericFunc';
 import { CurrentCity } from 'src/app/interface/courentcity';
@@ -11,7 +11,7 @@ import { CelsiusfahrenheitServiceService } from 'src/app/services/toggle-button-
   templateUrl: './card-city.component.html',
   styleUrls: ['./card-city.component.scss']
 })
-export class CardCityComponent implements OnInit {
+export class CardCityComponent implements OnInit, OnChanges {
   @Input() CourentCityKey = '';
   @Input() CourentCityName = '';
   @Input() CityInfo: CurrentCity = {
@@ -52,6 +52,13 @@ export class CardCityComponent implements OnInit {
     }
   }
 
+  
+  ngOnChanges(changes: SimpleChanges): void {
+      if(changes['CourentCityName'].previousValue != changes['CourentCityName'].currentValue && changes['CourentCityName'].currentValue != undefined){
+        this.heartStatus()
+      }
+  }
+
   heartStatus(){
     if(this.storage.getIsCityInLocalStorage(this.CourentCityName)){
       this.isActive = true;
@@ -66,8 +73,7 @@ export class CardCityComponent implements OnInit {
     }
     else if(this.isActive === false){
       this.storage.setLocalStorage(this.CourentCityName)
-    }
-    
+    } 
     this.isActive = !this.isActive;
   }
 

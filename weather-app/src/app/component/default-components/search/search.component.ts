@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { dayOrNight, isEnglishLettersOnly } from 'src/app/generic-func/genericFunc';
 import { ApiServiceService } from 'src/app/services/api-service/api-service.service';
@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
   @Output() citySelected = new EventEmitter<{ cityName: string, cityKey: string }>();
 
 
-  constructor(private request: RequestServiceService) {}
+  constructor(private request: RequestServiceService, private elementRef: ElementRef, private renderer: Renderer2) { }
 
 
   ngOnInit(): void {
@@ -44,6 +44,15 @@ export class SearchComponent implements OnInit {
         this.src = './../../../../assets/img/day-night/someUnknownHour.jpg';
       }
     })
+  }
+
+
+  ngAfterViewInit() {
+    // Get the element
+    const element = this.elementRef.nativeElement.querySelector('.mat-mdc-form-field-subscript-wrapper');
+
+    // Remove the class
+    this.renderer.removeClass(element, 'mat-mdc-form-field-bottom-align');
   }
 
 

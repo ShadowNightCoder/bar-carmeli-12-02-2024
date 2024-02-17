@@ -1,35 +1,28 @@
 <div class="search-container">
-    <!-- <img [src]="src" alt="now weather img" class="courentweather img-rounded img-fluid"> -->
-    <div class="search">
-        <div class="col-xs-5 size-max">
-            <div class="input-group">
-                <!-- <input type="text" class="form-control" placeholder="Search City" #CityInput [(ngModel)]="inputLive"> -->
-                <!-- <input type="text" class="form-control" placeholder="Search City" (input)="autoComplete()" [(ngModel)]="inputLive"> -->
+    <div class="search-box">
+        <div class="search-input">
+            <mat-form-field class="example-full-width">
+                <mat-label>Search City</mat-label>
+                <input matInput placeholder="Search City" [matAutocomplete]="auto" (input)="autoComplete()"
+                    [(ngModel)]="inputLive">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let city of cityList" [value]="city.name"
+                        (onSelectionChange)="onOptionSelected(city)">
+                        {{city.name}} of {{city.country}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
 
 
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Search City" [matAutocomplete]="auto" (input)="autoComplete()" [(ngModel)]="inputLive">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let city of cityList" [value]="city.name" (onSelectionChange)="onOptionSelected(city)">
-                            {{city.name}} of {{city.country}}
-                        </mat-option>
-                    </mat-autocomplete>
-                  </mat-form-field>
-                
-
-
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit" (click)="onSubmit();" [disabled]="!optionSelected">
-
-
-                    <!-- <button class="btn btn-default" type="submit" (click)="onSubmit(CityInput.value);"> -->
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="error_wrong_input" *ngIf="badInput">{{this.errorShow}}</div>
+        <div class="input-group-btn">
+            <button class="btn btn-default" type="submit" (click)="onSubmit();" [disabled]="!optionSelected">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
         </div>
     </div>
 </div>
 
-
+<div class="error-container" *ngIf="badInput">
+    <div class="error_wrong_input">{{this.errorShow}}</div>
+</div>

@@ -30,6 +30,10 @@ body {
     --primary-scrollbar-thumb: #888;
     --primary-scrollbar-track: #f1f1f1;
 
+    --primary-worning: red;
+
+    --primary-search-bg: whitesmoke;
+
     &.dark {
         --primary-bg-color: rgb(31, 31, 31);
         --primary-text-color: rgb(229, 229, 229);
@@ -47,6 +51,10 @@ body {
 
         --primary-scrollbar-thumb: #f8f8f8;
         --primary-scrollbar-track: #666666;
+
+        --primary-worning: rgb(255, 139, 139);
+
+        --primary-search-bg: rgb(174, 174, 174);
     }
 
 
