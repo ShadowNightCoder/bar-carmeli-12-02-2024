@@ -17,9 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs",
+            "outputPath": "./docs",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "baseHref": "/bar-carmeli-12-02-2024/",
             "polyfills": [
               "zone.js"
             ],
