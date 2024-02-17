@@ -10,7 +10,7 @@ import { catchError, throwError } from 'rxjs';
 })
 export class ApiServiceService {
 
-  apiKey = "TcZ0B0gAi0NY0UKjnl276YmekC0xGxic"
+  apiKey = "ExpLo8UD9jDTK80edJ8G7fXcc9x7rASU"
   baseUrl = "https://dataservice.accuweather.com";
 
   constructor(private http: HttpClient) { }
