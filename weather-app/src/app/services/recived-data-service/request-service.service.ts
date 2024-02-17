@@ -14,6 +14,11 @@ export class RequestServiceService {
 
   constructor(private weatherApi: ApiServiceService, private ErrorDialog: ErrorHandlerService) { }
 
+  /**
+   * Fetches city information from the weather API
+   * @param cityName - The name of the city to fetch
+   * @returns An observable that emits an array of city information
+   */
   getCity(cityName: string): Observable<any[]> {
     return this.weatherApi.getCityInfo(cityName).pipe(
       map((res: CitiesData[]) => {
@@ -31,6 +36,11 @@ export class RequestServiceService {
   }
 
 
+  /**
+   * Fetches current weather information for a city from the weather API
+   * @param Locationkey - The location key of the city
+   * @returns An observable that emits an array of current weather information
+   */
   getCityCurrentWeather(Locationkey: string): Observable<any[]> {
     return this.weatherApi.getCityWeather(Locationkey).pipe(
       map((res: CurrentWeather[]) => {
@@ -49,6 +59,11 @@ export class RequestServiceService {
   }
 
 
+/**
+   * Fetches five days forecast information for a city from the weather API
+   * @param Locationkey - The location key of the city
+   * @returns An observable that emits an array of five days forecast information
+   */
   getFiveDaysForecast(Locationkey: string): Observable<any[]> {
     return this.weatherApi.getCityDailyForecasts(Locationkey).pipe(
       map((res: any) => {

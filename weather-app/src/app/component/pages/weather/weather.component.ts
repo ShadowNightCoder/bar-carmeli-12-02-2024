@@ -22,11 +22,13 @@ export class WeatherComponent implements OnInit {
   }
   fiveDaysForecastArray: weatherForFiveDays[] = [];
   wantendCity: any[] = [];
+
+  // Default city to search for (initially set to 'Tel Aviv')
   defaultSearchedCity = 'Tel Aviv';
-;
 
 
-  
+
+
   constructor(private route: ActivatedRoute, private request: RequestServiceService) {
     this.route.queryParams.subscribe(params => {
       if (params['key']) {
@@ -40,40 +42,69 @@ export class WeatherComponent implements OnInit {
     this.reciveCity(this.defaultSearchedCity);
   }
 
-
+  /**
+    * Fetch city information from the API based on cityName parameter
+    * @param cityName - The name of the city to fetch
+    */
   reciveCity(cityName: string) {
-    this.request.getCity(cityName).subscribe((citiesInfoArray: any[]) => {
-      this.cityList = citiesInfoArray;
-      this.wantendCity = this.cityList.filter(city => city.name === cityName);
-      this.CourentCityKey = this.wantendCity[0].key;
-      this.CourentCityName = cityName;
-      this.reciveCityCurrentWeather(this.CourentCityKey);
-    })
-  }
-
-
-  reciveCityCurrentWeather(Locationkey: string, cityName?: string) {
-    if(cityName){
-      this.CourentCityName = cityName;
-    }
-
-    this.request.getCityCurrentWeather(Locationkey).subscribe((currentCity: any[]) => {
-      currentCity.map(city => {
-        this.CourentCity.timeRightNow = city.cityWeatherDate;
-        this.CourentCity.weatherText = city.cityWeatherText;
-        this.CourentCity.temperatureImperial.unit = city.cityWeatherTemperatureImperial.Unit;
-        this.CourentCity.temperatureImperial.value = city.cityWeatherTemperatureImperial.Value;
-        this.CourentCity.temperatureImperial.unitType = city.cityWeatherTemperatureImperial.UnitType;
-        this.CourentCity.weatherIcon = city.cityWeatherIcon;
+    try {
+      this.request.getCity(cityName).subscribe((citiesInfoArray: any[]) => {
+        this.cityList = citiesInfoArray;
+        this.wantendCity = this.cityList.filter(city => city.name === cityName);
+        this.CourentCityKey = this.wantendCity[0].key;
+        this.CourentCityName = cityName;
+        this.reciveCityCurrentWeather(this.CourentCityKey);
       })
-      this.getFiveDaysForecast(Locationkey)
-    })
+    }
+    catch (error) {
+      console.error('Error receiving city:', error);
+    }
   }
 
 
+  /**
+    * Fetch current weather information for the given Locationkey
+    * @param Locationkey - The location key of the city
+    * @param cityName - The name of the city to fetch (optional)
+    */
+  reciveCityCurrentWeather(Locationkey: string, cityName?: string) {
+    try {
+      if (cityName) {
+        this.CourentCityName = cityName;
+      }
+
+      this.request.getCityCurrentWeather(Locationkey).subscribe((currentCity: any[]) => {
+        currentCity.map(city => {
+          this.CourentCity.timeRightNow = city.cityWeatherDate;
+          this.CourentCity.weatherText = city.cityWeatherText;
+          this.CourentCity.temperatureImperial.unit = city.cityWeatherTemperatureImperial.Unit;
+          this.CourentCity.temperatureImperial.value = city.cityWeatherTemperatureImperial.Value;
+          this.CourentCity.temperatureImperial.unitType = city.cityWeatherTemperatureImperial.UnitType;
+          this.CourentCity.weatherIcon = city.cityWeatherIcon;
+        })
+        this.getFiveDaysForecast(Locationkey)
+      })
+    }
+    catch (error) {
+      console.error('Error receiving current weather:', error);
+    }
+  }
+
+
+   /**
+    * Fetch five days forecast information for the given Locationkey
+    * @param Locationkey - The location number of the city to fetch
+    */
   getFiveDaysForecast(Locationkey: string) {
-    this.request.getFiveDaysForecast(Locationkey).subscribe((currentCity: any) => {
-      this.fiveDaysForecastArray = currentCity;
-    });
+    try {
+      this.request.getFiveDaysForecast(Locationkey).subscribe((currentCity: any) => {
+        this.fiveDaysForecastArray = currentCity;
+      });
+    }
+    catch (error) {
+      console.error('Error receiving five days forecast:', error);
+    }
   }
 }
+
+

@@ -37,6 +37,10 @@ body {
     --primary-mat-button-toggle-appearance: #fff;
     --primary-mat-button-toggle-checked: #e0e0e0;
 
+    --primary-switch-button-first-color: #e72c83;
+    --primary-switch-button-second-color: #a742c6;
+
+
     &.dark {
         --primary-bg-color: rgb(31, 31, 31);
         --primary-text-color: rgb(229, 229, 229);
@@ -61,6 +65,9 @@ body {
 
         --primary-mat-button-toggle-appearance: #999999;
         --primary-mat-button-toggle-checked: #464646;
+
+        --primary-switch-button-first-color: #3ea5ff;
+        --primary-switch-button-second-color: #256bbb;
     }
 
 
@@ -109,6 +116,6 @@ body {
     /* Color of the track */
 }
 
-.mdc-switch__ripple{
+.mdc-switch__ripple {
     left: 0 !important;
 }
